@@ -31,7 +31,6 @@
 		gap: 1em;
 		padding: 1em;
 		border: 1px solid grey;
-		min-width: 40ch;
 	}
 
 	.top {

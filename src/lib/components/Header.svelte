@@ -27,8 +27,9 @@
 
 <style>
 	header {
-		display: grid;
-		grid-template-columns: repeat(3, auto);
+		display: flex;
+		flex-direction: row;
+        flex-wrap: wrap;
 		justify-content: center;
 		gap: 2em;
 		width: 100%;

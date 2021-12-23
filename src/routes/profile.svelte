@@ -25,7 +25,6 @@
 	}
 </script>
 
-{patchList.length}
 <h2>My Patches</h2>
 <div class="patchList">
 	{#each patchList as obj}
