@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+html {
+	font-family: 'IBM Plex Mono', monospace;
+	/* font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, 'Fira Sans', 'Droid Sans', Arial, */
+	font-size: 16px;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+}
+
+button {
+	font-family: 'IBM Plex Mono', monospace;
+	border: 2px solid violet;
+	background-color: rgb(255, 255, 255);
+	cursor: pointer;
+	min-width: min-content;
+}
+
+button:hover {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+button:active {
+	background-color: thistle;
+	color: white;
+}
+
+a {
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+a:hover {
+	background-color: black;
+	color: white;
+}
+
+input {
+	font-family: 'IBM Plex Mono', monospace;
+}
