@@ -30,20 +30,29 @@
 		.catch((e) => {
 			err = 'Error retrieving patch';
 		});
+
 </script>
 
+<div class="container">
 {#if !err && patch}
 	<Patch
 		name={patch.data.name}
 		patch={patch.data.patch}
 		description={patch.description}
 		id={patch.id}
+		limit={280}
 	/>
 {:else}
 	<div class="err">{err}</div>
 {/if}
+</div>
 
 <style>
+	.container {
+		display: grid;
+		grid-template-rows: auto auto;
+		gap: 0.5em;
+	}
 	.err {
 		font-size: 2rem;
 	}
