@@ -17,7 +17,7 @@
 	});
 </script>
 
-<h2>Latest Patches</h2>
+<h3>Latest Patches</h3>
 <div class="patchList">
 	{#each patchList.slice(0, 30) as obj}
 		<Patch

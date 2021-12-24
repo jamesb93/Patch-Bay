@@ -25,7 +25,7 @@
 	}
 </script>
 
-<h2>My Patches</h2>
+<h3>My Patches</h3>
 <div class="patchList">
 	{#each patchList as obj}
 		<Patch
