@@ -4,8 +4,8 @@
 	import Footer from '$lib/components/Footer.svelte';
 </script>
 
+<Header />
 <main class="container">
-	<Header />
 	<slot />
 	<Footer />
 </main>
@@ -16,7 +16,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: min(100%, 70ch);
+		width: min(100%, 65ch);
 		margin: 0 auto;
 	}
 </style>
