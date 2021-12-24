@@ -10,7 +10,7 @@
 
 <div class="auth">
 	<input bind:value={email} placeholder="Enter your e-mail" />
-	<input bind:value={password} placeholder="Enter a password" />
+	<input type='password'bind:value={password} placeholder="Enter a password" />
 
 	{#if !$user}
 		<CreateAccount bind:email bind:password bind:error />
