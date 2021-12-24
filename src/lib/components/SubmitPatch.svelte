@@ -32,16 +32,16 @@
 	};
 </script>
 
-<!-- {#if $user} -->
+{#if $user}
 	<div class="container">
-		<textarea class="patch" placeholder="copy patch here" cols="30" rows="30" bind:value={patch} />
+		<textarea wrap="off" class="patch" placeholder="copy patch here" cols="30" rows="30" bind:value={patch} />
 		<div class="submit">
-			<input type="text" bind:value={name} placeholder="patch name" />
-			<input type="text" bind:value={description} placeholder="description" />
-			<button on:click={addData} disabled={updating}> Submit </button>
+			<textarea class='details name' type="text" bind:value={name} placeholder="patch name" />
+			<textarea class='details desc' type="text" bind:value={description} placeholder="description" />
+			<button on:click={addData} disabled={updating}>Submit</button>
 		</div>
 	</div>
-<!-- {/if} -->
+{/if}
 
 <style>
 	.container {
@@ -52,20 +52,29 @@
 	}
 
 	.patch {
-		font-family: 'IBM Plex Mono', monospace;
-		height: 50%;
+		height: 50ch;
 		resize: none;
 		border: 1px solid rgb(235, 235, 235);
+		white-space: pre-wrap;
 	}
 
-	.patch:focus {
-		outline: 0;
+	.details {
+		border: 1px solid rgb(235, 235, 235);
+		resize: none;
+	}
+
+	.name {
+		height: 3ch;
+	}
+
+	.desc {
+		height: 9ch;
 	}
 
 	.submit {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		gap: 0.5em;
-		width: 100%;
+		resize: none;
 	}
 </style>
