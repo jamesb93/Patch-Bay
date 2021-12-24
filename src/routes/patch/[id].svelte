@@ -1,4 +1,6 @@
 <script context="module">
+	export const ssr = false;
+
 	export async function load({ page }) {
 		return {
 			props: { id: page.params.id }
