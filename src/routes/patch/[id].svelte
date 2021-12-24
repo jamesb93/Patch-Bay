@@ -40,9 +40,9 @@
 	<Patch
 		name={patch.data.name}
 		patch={patch.data.patch}
-		description={patch.description}
+		description={patch.data.description}
 		id={patch.id}
-		limit={280}
+		limit={400}
 	/>
 {:else}
 	<div class="err">{err}</div>
