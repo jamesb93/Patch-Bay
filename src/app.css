@@ -12,10 +12,11 @@ html {
 
 button {
 	font-family: 'IBM Plex Mono', monospace;
-	border: 2px solid violet;
+	border: 2px solid rgba(102,103,171,255);
 	background-color: rgb(255, 255, 255);
 	cursor: pointer;
 	min-width: min-content;
+	white-space: nowrap;
 }
 
 button:hover {
@@ -43,4 +44,18 @@ a:hover {
 
 input {
 	font-family: 'IBM Plex Mono', monospace;
+	border-radius: 0;
+	border: 1px solid grey;
+}
+
+textarea, input {
+	outline: 0;
+	font-family: 'IBM Plex Mono', monospace;
+}
+input:active, input:focus, textarea:active, textarea:focus {
+	border: 2px solid rgb(102, 103, 171);
+}
+
+pre {
+	overflow: auto;
 }
