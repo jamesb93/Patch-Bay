@@ -12,7 +12,7 @@ html {
 
 button {
 	font-family: 'IBM Plex Mono', monospace;
-	border: 2px solid rgba(102,103,171,255);
+	border: 2px solid rgba(102, 103, 171, 255);
 	background-color: rgb(255, 255, 255);
 	cursor: pointer;
 	min-width: min-content;
@@ -48,11 +48,15 @@ input {
 	border: 1px solid grey;
 }
 
-textarea, input {
+textarea,
+input {
 	outline: 0;
 	font-family: 'IBM Plex Mono', monospace;
 }
-input:active, input:focus, textarea:active, textarea:focus {
+input:active,
+input:focus,
+textarea:active,
+textarea:focus {
 	border: 2px solid rgb(102, 103, 171);
 }
 
