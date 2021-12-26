@@ -1,14 +1,11 @@
-<!-- 
-    This component handles signing in and signing out.
--->
-<script>
+<script lang="ts">
 	import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 	import { auth, user } from '$lib/app';
 	import { goto } from '$app/navigation';
 
-	export let email;
-	export let password;
-	export let error;
+	export let email: string = '';
+	export let password: string = '';
+	export let error: string = '';
 
 	const errors = {
 		'auth/user-not-found': 'User not found',

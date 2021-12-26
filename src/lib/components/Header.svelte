@@ -6,9 +6,11 @@
 	const signUserOut = () => {
 		signOut(auth)
 			.then(() => {
-				console.log('user signed out');
+				console.log('User signed out');
 			})
-			.catch((e) => {});
+			.catch((e) => {
+				console.log(`User failed to sign out with error ${e.code}`);
+			});
 	};
 </script>
 
@@ -29,7 +31,7 @@
 	header {
 		display: flex;
 		flex-direction: row;
-        flex-wrap: wrap;
+		flex-wrap: wrap;
 		justify-content: center;
 		gap: 2em;
 		width: 100%;

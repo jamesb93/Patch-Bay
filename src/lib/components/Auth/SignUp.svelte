@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
 	import { createUserWithEmailAndPassword } from 'firebase/auth';
 	import { auth } from '$lib/app';
 	import { fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
 
-	export let email;
-	export let password;
-	export let error;
+	export let email: string = '';
+	export let password: string = '';
+	export let error: string = '';
 
 	const errors = {
 		'auth/email-already-in-use': 'Account already exists',

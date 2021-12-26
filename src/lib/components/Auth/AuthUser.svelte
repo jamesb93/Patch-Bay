@@ -1,19 +1,19 @@
-<script>
+<script lang="ts">
 	import { user } from '$lib/app';
 	import SignIn from '$lib/components/Auth/SignIn.svelte';
-	import CreateAccount from '$lib/components/Auth/SignUp.svelte';
+	import SignUp from '$lib/components/Auth/SignUp.svelte';
 
-	let email = '';
-	let password = '';
-	let error = '';
+	let email: string = '';
+	let password: string = '';
+	let error: string = '';
 </script>
 
 <div class="auth">
 	<input bind:value={email} placeholder="Enter your e-mail" />
-	<input type='password'bind:value={password} placeholder="Enter a password" />
+	<input type="password" bind:value={password} placeholder="Enter a password" />
 
 	{#if !$user}
-		<CreateAccount bind:email bind:password bind:error />
+		<SignUp bind:email bind:password bind:error />
 	{/if}
 	<SignIn bind:email bind:password bind:error />
 

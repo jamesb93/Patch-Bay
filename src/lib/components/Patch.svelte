@@ -1,17 +1,18 @@
-<script>
+<script lang="ts">
 	import { browser } from '$app/env';
 
-	export let name = '';
-	export let patch = '';
-	export let description = '';
-	export let id = '';
-	export let limit = 60;
+	export let name: string = '';
+	export let patch: string = '';
+	export let description: string = '';
+	export let id: string = '';
+	export let limit: number = 60;
 
-	const preview = patch.slice(0, limit)
+	const preview: string = patch
+		.slice(0, limit)
 		.replace('<code>', '')
 		.replace('</code>', '')
 		.replace('<pre>', '')
-		.replace('</pre>', '')
+		.replace('</pre>', '');
 
 	const copyPatch = () => {
 		if (browser) {

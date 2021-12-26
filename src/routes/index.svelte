@@ -1,16 +1,21 @@
-<script>
-	import Patch from '$lib/components/Patch.svelte';
+<script lang="ts">
+	import type { PatchObject } from '$lib/types';
+	import PatchList from '$lib/components/PatchList.svelte';
 	import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
-
 	const db = getFirestore();
-	let patchList = [];
+	let patchList: Array<PatchObject> = [];
 
 	getDocs(collection(db, 'patches')).then((query) => {
 		query.forEach((d) => {
+			const data = d.data();
 			patchList.push({
 				id: d.id,
-				data: d.data()
+				data: {
+					name: data.name,
+					description: data.description,
+					patch: data.patch
+				}
 			});
 		});
 		patchList = patchList; // Trigger svelte reactivity 🙄
@@ -18,21 +23,4 @@
 </script>
 
 <h3>Latest Patches</h3>
-<div class="patchList">
-	{#each patchList.slice(0, 30) as obj}
-		<Patch
-			name={obj.data.name}
-			patch={obj.data.patch}
-			description={obj.data.description}
-			id={obj.id}
-		/>
-	{/each}
-</div>
-
-<style>
-	.patchList {
-		display: flex;
-		flex-direction: column;
-		gap: 1em;
-	}
-</style>
+<PatchList patches={patchList} />
