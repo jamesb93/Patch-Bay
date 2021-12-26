@@ -1,38 +1,26 @@
-# create-svelte
+# Patch Bay
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+[Max](https://cycling74.com/products/max) users share patches by creating a _compressed_ version, sending the raw text and decompressing on the other side. This application facilitates that workflow by allowing people to upload, store and share their patches in a minimalist interface. It is by default anonymous, but allows users to optionally register accounts to maintaing a record of patches they've shared.
 
-## Creating a project
+The site can be visited at https://shareapatchwith.me
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Under the hood
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+The website is built on [SvelteKit](https://kit.svelte.dev/) for the frontend and uses [Firebase](https://firebase.google.com/) as the backend to store patches and manage user authentication.
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
-
-> Note: the `@next` is temporary
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+To build a production node application:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm run build
 ```
 
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
+To run the website in development mode:
 
 ```bash
-npm run build
+pnpm run dev
 ```
 
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+## Plans
+
+- [ ] CLI
+- [ ] API
