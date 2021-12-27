@@ -33,28 +33,26 @@
 	};
 </script>
 
-{#if $user}
-	<div class="container">
+<div class="container">
+	<textarea
+		wrap="off"
+		class="patch"
+		placeholder="copy patch here"
+		cols="30"
+		rows="30"
+		bind:value={patch}
+	/>
+	<div class="submit">
+		<textarea class="details name" type="text" bind:value={name} placeholder="patch name" />
 		<textarea
-			wrap="off"
-			class="patch"
-			placeholder="copy patch here"
-			cols="30"
-			rows="30"
-			bind:value={patch}
+			class="details desc"
+			type="text"
+			bind:value={description}
+			placeholder="description"
 		/>
-		<div class="submit">
-			<textarea class="details name" type="text" bind:value={name} placeholder="patch name" />
-			<textarea
-				class="details desc"
-				type="text"
-				bind:value={description}
-				placeholder="description"
-			/>
-			<button on:click={addData} disabled={updating}>Submit</button>
-		</div>
+		<button on:click={addData} disabled={updating}>Submit</button>
 	</div>
-{/if}
+</div>
 
 <style>
 	.container {
