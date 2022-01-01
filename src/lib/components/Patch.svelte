@@ -31,7 +31,7 @@
 	<div class="top">
 		<a href={`/patch/${id}`} class="name">{name || 'untitled'}</a>
 		<div class="links">
-			<button on:click={copyPatch} class="copy">copy text</button>
+			<button on:click={copyPatch} class="copy">copy code</button>
 			<button on:click={copyLink}>copy link</button>
 		</div>
 	</div>
