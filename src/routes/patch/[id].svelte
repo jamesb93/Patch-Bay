@@ -7,16 +7,14 @@
 </script>
 
 <script lang="ts">
+	import { browser } from '$app/env';
 	import type { PatchObject } from '$lib/types';
 	import {
 		doc,
 		DocumentReference,
 		getDoc,
 		getFirestore,
-		Query,
-		QueryDocumentSnapshot
 	} from 'firebase/firestore';
-	import Patch from '$lib/components/Patch.svelte';
 
 	export let id: string = '';
 	let err: string = '';
@@ -37,6 +35,7 @@
 						patch: data.patch
 					}
 				};
+				console.log(patch)
 			} else {
 				err = 'Patch does not exist';
 			}
@@ -44,23 +43,40 @@
 		.catch((e) => {
 			err = 'Error retrieving patch';
 		});
+
+	const copyPatch = () => {
+		if (browser) {
+			navigator.clipboard.writeText(patch.data.patch);
+		}
+	};
+
+	const sanitiseHTML = (str) => {
+		return str.replaceAll('\n', '<br>').replaceAll('\t', '&nbsp;&nbsp;&nbsp;&nbsp;')
+	}
 </script>
 
 <div class="container">
 	{#if !err && patch}
-		<Patch
-			name={patch.data.name}
-			patch={patch.data.patch}
-			description={patch.data.description}
-			id={patch.id}
-			limit={400}
-		/>
+	<h1 class='name'>{patch.data.name}</h1>
+	{#if patch.data.description}
+	<div class="description">
+		{patch.data.description}
+	</div>
+	{/if}
+
+	<button on:click={copyPatch} class="copy">copy code</button>
+	<div class="code">
+		{ @html sanitiseHTML(patch.data.patch) }
+	</div>
 	{:else}
 		<div class="err">{err}</div>
 	{/if}
 </div>
 
 <style>
+	h1 {
+		margin-bottom: 0.5em;
+	}
 	.container {
 		display: grid;
 		grid-template-rows: auto auto;
@@ -68,5 +84,10 @@
 	}
 	.err {
 		font-size: 2rem;
+	}
+
+	.copy {
+		margin-top: 1em;
+		font-size: 1.5rem;
 	}
 </style>
