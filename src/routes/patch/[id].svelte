@@ -1,7 +1,7 @@
 <script context="module">
-	export async function load({ page }) {
+	export async function load({ params }) {
 		return {
-			props: { id: page.params.id }
+			props: { id: params.id }
 		};
 	}
 </script>
