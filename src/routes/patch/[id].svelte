@@ -7,26 +7,36 @@
 </script>
 
 <script lang="ts">
+	import type { PatchObject, DocData } from '$lib/types';
 	import { browser } from '$app/env';
-	import type { PatchObject } from '$lib/types';
+	import { goto } from '$app/navigation';
+	import { user } from '$lib/app';
 	import {
 		doc,
 		DocumentReference,
 		getDoc,
 		getFirestore,
+		deleteDoc
 	} from 'firebase/firestore';
 
 	export let id: string = '';
 	let err: string = '';
 	let patch: PatchObject;
+	let canDelete: boolean = false;
+	let data: DocData;
 
 	const db = getFirestore();
 	const ref: DocumentReference = doc(db, 'patches', id);
 
+	// Allow for deletion if the user owns the patch
+	$: if ($user && data) {
+		canDelete = data.user === $user.uid
+	}
+
 	getDoc(ref)
 		.then((doc) => {
 			if (doc.exists()) {
-				const data = doc.data();
+				data = doc.data();
 				patch = {
 					id: doc.id,
 					data: {
@@ -35,7 +45,6 @@
 						patch: data.patch
 					}
 				};
-				console.log(patch)
 			} else {
 				err = 'Patch does not exist';
 			}
@@ -49,6 +58,14 @@
 			navigator.clipboard.writeText(patch.data.patch);
 		}
 	};
+
+	const deletePatch = async() => {
+		deleteDoc(ref)
+		.then(res => goto('/'))
+		.catch(e => {
+			err = 'Error deleting patch'
+		})
+	}
 
 	const sanitiseHTML = (str) => {
 		return str.replaceAll('\n', '<br>').replaceAll('\t', '&nbsp;&nbsp;&nbsp;&nbsp;')
@@ -65,11 +82,16 @@
 	{/if}
 
 	<button on:click={copyPatch} class="copy">copy code</button>
+
 	<div class="code">
 		{ @html sanitiseHTML(patch.data.patch) }
 	</div>
 	{:else}
 		<div class="err">{err}</div>
+	{/if}
+
+	{#if canDelete}
+	<button on:click={deletePatch} class="delete">delete patch</button>
 	{/if}
 </div>
 
@@ -89,5 +111,10 @@
 	.copy {
 		margin-top: 1em;
 		font-size: 1.5rem;
+	}
+
+	.delete {
+		width: max-content;
+		border: 1px solid red;
 	}
 </style>
